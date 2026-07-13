@@ -15,6 +15,7 @@ teardown() {
 expected_files() {
   cat <<'EOF'
 AGENTS.md
+CHECKLIST.md
 CLAUDE.md
 .github/copilot-instructions.md
 .cursor/rules/agents.mdc
@@ -34,6 +35,7 @@ EOF
 @test "installed files are byte-identical to their templates" {
   "$INSTALL" "$WORK" >/dev/null
   diff "$WORK/AGENTS.md" "$KIT/templates/AGENTS.md"
+  diff "$WORK/CHECKLIST.md" "$KIT/templates/CHECKLIST.md"
   diff "$WORK/CLAUDE.md" "$KIT/templates/adapters/CLAUDE.md"
   diff "$WORK/.github/copilot-instructions.md" "$KIT/templates/adapters/.github/copilot-instructions.md"
   diff "$WORK/.cursor/rules/agents.mdc" "$KIT/templates/adapters/.cursor/rules/agents.mdc"

@@ -45,6 +45,9 @@ repo is agent-ready.
   read that same `AGENTS.md`. Write your rules once.
 - **`templates/memory/`** — a persistent-memory scaffold for durable, non-obvious
   facts (a `MEMORY.md` index + a memory-file template with frontmatter).
+- **`templates/CHECKLIST.md`** — a definition-of-done checklist: build, tests,
+  lint, the real behavior exercised, the diff read, no secrets left behind.
+  Points back to `AGENTS.md` for the actual commands.
 - **`docs/principles.md`** — the ten universal principles, each with the *why*.
 - **`docs/scaling.md`** — optional multi-agent coordination, for when one repo has
   many agents at once. Most projects never need it — and the kit says so.
