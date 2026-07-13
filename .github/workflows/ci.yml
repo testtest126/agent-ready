@@ -20,8 +20,8 @@ jobs:
           sudo apt-get update
           sudo apt-get install -y shellcheck bats
 
-      - name: Shellcheck install.sh
-        run: shellcheck install.sh
+      - name: Shellcheck shell scripts
+        run: shellcheck ./*.sh
 
-      - name: Run install.sh test suite
-        run: bats tests/install.bats
+      - name: Run test suite
+        run: bats tests/*.bats
