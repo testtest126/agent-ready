@@ -56,6 +56,9 @@ repo is agent-ready.
 - **`docs/scaling.md`** — optional multi-agent coordination, for when one repo has
   many agents at once. Most projects never need it — and the kit says so.
 
+> **Dogfooded:** this repo runs on its own kit — the `AGENTS.md`, adapters, and
+> `memory/` at the root were produced by running `install.sh` on itself.
+
 ## Deep dives
 
 The reasoning underneath the kit, at maximum technical depth — for developers and

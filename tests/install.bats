@@ -12,7 +12,23 @@ teardown() {
   rm -rf "$WORK"
 }
 
+# Map a template's absolute path to the path install.sh should produce, relative
+# to the target (adapters/* land at the target root — same rule as the installer).
+template_dest() {
+  rel="${1#"$KIT"/templates/}"
+  case "$rel" in
+    adapters/*) rel="${rel#adapters/}" ;;
+  esac
+  printf '%s\n' "$rel"
+}
+
+# The full set of expected files, derived from templates/ rather than hardcoded.
+# Kept dynamic on purpose: drop a file into templates/ and both the installer and
+# these tests cover it, with nothing to hand-maintain here.
 expected_files() {
+  find "$KIT/templates" -type f | sort | while IFS= read -r src; do
+    template_dest "$src"
+  done
   cat <<'EOF'
 AGENTS.md
 CHECKLIST.md
@@ -34,6 +50,9 @@ EOF
 
 @test "installed files are byte-identical to their templates" {
   "$INSTALL" "$WORK" >/dev/null
+  while IFS= read -r src; do
+    diff "$WORK/$(template_dest "$src")" "$src" || return 1
+  done < <(find "$KIT/templates" -type f)
   diff "$WORK/AGENTS.md" "$KIT/templates/AGENTS.md"
   diff "$WORK/CHECKLIST.md" "$KIT/templates/CHECKLIST.md"
   diff "$WORK/CLAUDE.md" "$KIT/templates/adapters/CLAUDE.md"
