@@ -42,8 +42,9 @@ body {
 .bar .wrap { display: flex; align-items: center; gap: 1.2rem; height: 52px; }
 .bar a { color: var(--dim); text-decoration: none; font: 500 .82rem/1 var(--mono); letter-spacing: .02em; }
 .bar a:hover { color: var(--text); }
-.bar .brand { color: var(--strong); font-weight: 700; }
+.bar .brand { color: var(--strong); font-weight: 700; display: flex; align-items: center; gap: .5rem; }
 .bar .brand b { color: var(--accent); }
+.bar .brand img { height: 22px; width: 22px; border-radius: 6px; }
 .bar .spring { flex: 1; }
 .theme-btn { cursor: pointer; background: transparent; border: 1px solid var(--line-2); color: var(--dim); border-radius: 6px; padding: .3rem .55rem; font: 500 .7rem/1 var(--mono); }
 .theme-btn:hover { color: var(--text); border-color: var(--accent); }
