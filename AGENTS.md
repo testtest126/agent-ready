@@ -35,7 +35,8 @@ running `./install.sh .`).
 These hold for every change, whoever &mdash; or whatever &mdash; makes it:
 
 1. **Verify, don't assume.** "Tests pass" is not "it works." Exercise the real
-   change; for a bug fix, first confirm the test *fails without the fix*.
+   change; for a bug fix, first confirm the test *fails without the fix*. See
+   `CHECKLIST.md` for the full definition of done.
 2. **Silence is never consent.** Before anything irreversible or outward-facing
    &mdash; publish, delete, send, deploy, merge, change access &mdash; get an
    explicit yes. A missing objection is not approval.

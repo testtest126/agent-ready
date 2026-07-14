@@ -29,6 +29,15 @@ expected_files() {
   find "$KIT/templates" -type f | sort | while IFS= read -r src; do
     template_dest "$src"
   done
+  cat <<'EOF'
+AGENTS.md
+CHECKLIST.md
+CLAUDE.md
+.github/copilot-instructions.md
+.cursor/rules/agents.mdc
+memory/MEMORY.md
+memory/EXAMPLE.md
+EOF
 }
 
 @test "fresh install copies every expected file" {
@@ -44,6 +53,13 @@ expected_files() {
   while IFS= read -r src; do
     diff "$WORK/$(template_dest "$src")" "$src" || return 1
   done < <(find "$KIT/templates" -type f)
+  diff "$WORK/AGENTS.md" "$KIT/templates/AGENTS.md"
+  diff "$WORK/CHECKLIST.md" "$KIT/templates/CHECKLIST.md"
+  diff "$WORK/CLAUDE.md" "$KIT/templates/adapters/CLAUDE.md"
+  diff "$WORK/.github/copilot-instructions.md" "$KIT/templates/adapters/.github/copilot-instructions.md"
+  diff "$WORK/.cursor/rules/agents.mdc" "$KIT/templates/adapters/.cursor/rules/agents.mdc"
+  diff "$WORK/memory/MEMORY.md" "$KIT/templates/memory/MEMORY.md"
+  diff "$WORK/memory/EXAMPLE.md" "$KIT/templates/memory/EXAMPLE.md"
 }
 
 @test "default target is the current directory" {
