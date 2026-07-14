@@ -1,3 +1,7 @@
+<p align="center">
+  <img src="docs/assets/logo.png" width="200" alt="agent-ready logo">
+</p>
+
 # agent-ready
 
 *Drop-in conventions that make any repository ready for AI collaboration.*
